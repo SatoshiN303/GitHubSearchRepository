@@ -26,4 +26,35 @@ extension GitHubRequest {
     var body: Encodable? {
         return nil
     }
+    
+    // URLSession にわたすために URLRequestに変換
+    func buildURLRequest() -> URLRequest {
+        let url = baseURL.appendingPathComponent(path)
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        
+        switch method {
+        case .get:
+            // URLComponentの利用で適切なエンコードを行う
+            components?.queryItems = queryItems
+        default:
+            fatalError("サポートされてないmethodです \(method)")
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.url = components?.url
+        urlRequest.httpMethod = method.rawValue
+        
+        return urlRequest
+    }
+    
+    func response(from data: Data, response: URLResponse) throws -> Response {
+        let decoder = JSONDecoder()
+        
+        if case (200..<300)? = (response as? HTTPURLResponse)?.statusCode {
+            return try decoder.decode(Response.self, from: data)
+        } else {
+            throw try decoder.decode(GitHubAPIError.self, from: data)
+        }
+        
+    }
 }

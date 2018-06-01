@@ -5,6 +5,7 @@
 //  Created by 佐藤 慎 on 2018/05/29.
 //  Copyright © 2018年 佐藤 慎. All rights reserved.
 //
+import Foundation
 
 final class GitHubAPI {
 
@@ -32,7 +33,7 @@ final class GitHubAPI {
         typealias Response = SearchResponse<User>
         
         var path: String {
-            return "/search/users "
+            return "/search/users"
         }
         
         var method: HTTPMethod {

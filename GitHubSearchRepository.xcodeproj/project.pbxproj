@@ -20,7 +20,6 @@
 		229A47BF209FE22200691D4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A47BE209FE22200691D4C /* User.swift */; };
 		22A3990720BCDE05009244C7 /* GitHubRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3990620BCDE05009244C7 /* GitHubRequest.swift */; };
 		22A3990A20BCDEE5009244C7 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3990920BCDEE5009244C7 /* HTTPMethod.swift */; };
-		22A3990C20BCDFEA009244C7 /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3990B20BCDFEA009244C7 /* URLQueryItem.swift */; };
 		22A3990F20BCE1C8009244C7 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3990E20BCE1C8009244C7 /* GitHubAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		229A47BE209FE22200691D4C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22A3990620BCDE05009244C7 /* GitHubRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRequest.swift; sourceTree = "<group>"; };
 		22A3990920BCDEE5009244C7 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		22A3990B20BCDFEA009244C7 /* URLQueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
 		22A3990E20BCE1C8009244C7 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				22A3990920BCDEE5009244C7 /* HTTPMethod.swift */,
-				22A3990B20BCDFEA009244C7 /* URLQueryItem.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -279,7 +276,6 @@
 				22A3990720BCDE05009244C7 /* GitHubRequest.swift in Sources */,
 				222B6F42209FE029006CC3A6 /* ViewController.swift in Sources */,
 				22363B9020ABC49E00990191 /* SearchResponse.swift in Sources */,
-				22A3990C20BCDFEA009244C7 /* URLQueryItem.swift in Sources */,
 				22A3990A20BCDEE5009244C7 /* HTTPMethod.swift in Sources */,
 				222B6F40209FE029006CC3A6 /* AppDelegate.swift in Sources */,
 				229A47BF209FE22200691D4C /* User.swift in Sources */,
