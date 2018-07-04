@@ -13,24 +13,55 @@ class GitHubSearchRepositoryTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testConnectonNormal() {
+        let loadExpectation = expectation(description: "testConnectonNormal")
+        let url = URL(string: "https://api.github.com/search/repositories?q=swift")!
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: urlRequest) { (data, urlResponse, error) in
+            guard let response = urlResponse as? HTTPURLResponse else {
+                XCTFail()
+                return
+            }
+            XCTAssertNotNil(response.statusCode)
+            XCTAssertNotNil(response.allHeaderFields["Date"])
+            XCTAssertNotNil(response.allHeaderFields["Content-Type"])
+            loadExpectation.fulfill()
+        }
+        task.resume()
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testConnectionSearchRepository() {
+        let loadExpectation = expectation(description: "testConnectionUseGitHubClient")
+        let request = GitHubAPI.SearchRepositories(keyword: "swift")
+        
+        GitHubClient().send(request: request) { result in
+            switch result {
+            case let .success(response):
+                for item in response.items {
+                    print("\(item.name), \(item.owner)")
+                }
+                XCTAssertTrue(response.items.count > 0)
+                loadExpectation.fulfill()
+                return
+            case let .failure(error):
+                print(error)
+                XCTFail()
+                return
+            }
         }
+        
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

@@ -51,8 +51,10 @@ extension GitHubRequest {
         let decoder = JSONDecoder()
         
         if case (200..<300)? = (response as? HTTPURLResponse)?.statusCode {
+            // JSONからエンティティをインスタンス化
             return try decoder.decode(Response.self, from: data)
         } else {
+            // JSONからAPIエラーをインスタンス化
             throw try decoder.decode(GitHubAPIError.self, from: data)
         }
         
